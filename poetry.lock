@@ -1,0 +1,15 @@
+[[package]]
+name = "config"
+version = "0.5.1"
+description = "A hierarchical, easy-to-use, powerful configuration module for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "2c4657a08df21989fb17c559b126c53c0adf4df1d2a018869b712674cb4127a1"
+
+[metadata.files]
+config = []

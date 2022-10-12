@@ -6,7 +6,7 @@ author:
 """
 print("hello")
 
-data_path = "halfedge_mesh/tests/data/bunny.off"
+data_path = "halfedge_mesh/tests/data/cube.off"
 
 import halfedge_mesh
 
@@ -46,4 +46,4 @@ def save_halfmesh_as_obj(mesh, file_name):
             open_file.write("f {} {} {}\n".format(face.a + 1, face.b + 1, face.c + 1))
 
 
-save_halfmesh_as_obj(mesh, "tmp_bunny.obj")
+save_halfmesh_as_obj(mesh, "cube.obj")

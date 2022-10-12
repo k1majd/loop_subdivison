@@ -5,7 +5,8 @@ description = "Performing loop subdivision for triangular mesh"
 authors = ["k1majd <54868379+k1majd@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
+config = "^0.5.1"
 
 [tool.poetry.dev-dependencies]
 

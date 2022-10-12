@@ -25,15 +25,15 @@ class HalfedgeMesh:
         # Which is faster?
         self.edges = None
 
-        with open(filename, "r") as file:
-            first_line = file.readline().strip().upper()
+        # with open(filename, "r") as file:
+        #     first_line = file.readline().strip().upper()
 
-            if first_line != "OFF":
-                raise ValueError("Filetype: " + first_line + " not accepted")
+        #     if first_line != "OFF":
+        #         raise ValueError("Filetype: " + first_line + " not accepted")
 
-            # TODO: build OBJ, PLY parsers
-            parser_dispatcher = {"OFF": self.parse_off}
-            parser_dispatcher[first_line](file)
+        #     # TODO: build OBJ, PLY parsers
+        #     parser_dispatcher = {"OFF": self.parse_off}
+        #     parser_dispatcher[first_line](file)
 
         if filename:
             self.vertices, self.halfedges, self.facets, self.edges = self.read_file(
@@ -41,15 +41,11 @@ class HalfedgeMesh:
             )
 
     def __eq__(self, other):
-        return (
-            isinstance(other, type(self))
-            and (
-                self.vertices,
-                self.halfedges,
-                self.facets,
-            )
-            == (other.vertices, other.halfedges, other.facets)
-        )
+        return isinstance(other, type(self)) and (
+            self.vertices,
+            self.halfedges,
+            self.facets,
+        ) == (other.vertices, other.halfedges, other.facets)
 
     def __hash__(self):
         return (
