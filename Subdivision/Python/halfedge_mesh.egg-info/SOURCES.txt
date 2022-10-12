@@ -1,0 +1,7 @@
+halfedge_mesh/runtests.py
+halfedge_mesh/setup.py
+halfedge_mesh/test.py
+halfedge_mesh.egg-info/PKG-INFO
+halfedge_mesh.egg-info/SOURCES.txt
+halfedge_mesh.egg-info/dependency_links.txt
+halfedge_mesh.egg-info/top_level.txt
