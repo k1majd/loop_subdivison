@@ -96,7 +96,7 @@ class SubDivider(halfedge_mesh.HalfedgeMesh):
             )
         return even_vertex
 
-    def compute_odd_vertex(self, halfedge):
+    def compute_odd_vertex(self, halfedge, index=None):
         """compute the odd vertex"""
         vertex_neighbor_list = self.odd_vertex_adjacency(halfedge)
         n = len(vertex_neighbor_list)
@@ -122,13 +122,20 @@ class SubDivider(halfedge_mesh.HalfedgeMesh):
             raise ValueError("odd vertex should have 2 or 4 neighbors")
         return odd_vertex
 
-    def loop_subdivision(self):
-        """_summary_
-
-        Returns:
-            _type_: _description_
-        """
-        pass
+    def loop_subdivision(self, mesh_old):
+        """perform loop subdivision on the mesh"""
+        mesh_new = halfedge_mesh.HalfedgeMesh()
+        vertex_list = []
+        face_list = []
+        face_index = 0
+        vertex_index = 0
+        he_explored = []
+        vertex_created = []
+        for face in mesh_old.facets:
+            halfedge = face.halfedge
+            while halfedge.next != face.halfedge:
+                if halfedge.opposite not in he_explored:
+                    vertex_list.append(self.compute_odd_vertex(halfedge))
 
     def _collect_boundary_vertices(self):
         """_summary_
