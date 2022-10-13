@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [[package]]
 name = "config"
 version = "0.5.1"
@@ -13,3 +14,13 @@ content-hash = "2c4657a08df21989fb17c559b126c53c0adf4df1d2a018869b712674cb4127a1
 
 [metadata.files]
 config = []
+=======
+package = []
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.9"
+content-hash = "ce2aa767160f871dd3652615ba0a0dceb7733d62eb8cb4665b87f30a562e3adf"
+
+[metadata.files]
+>>>>>>> c81561539a74e6c4bd4ef7ccba94f2bad449120c
