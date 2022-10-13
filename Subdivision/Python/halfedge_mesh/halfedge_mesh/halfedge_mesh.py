@@ -1,5 +1,5 @@
 import sys
-import config
+from .config import EPSILON
 import math
 
 # TODO: Reorder functions
@@ -455,7 +455,7 @@ def allclose(v1, v2):
     v1 = make_iterable(v1)
     v2 = make_iterable(v2)
 
-    elementwise_compare = list(map((lambda x, y: abs(x - y) < config.EPSILON), v1, v2))
+    elementwise_compare = list(map((lambda x, y: abs(x - y) < EPSILON), v1, v2))
     return reduce((lambda x, y: x and y), elementwise_compare)
 
 
