@@ -29,7 +29,7 @@ def arg_parser():
         "--iterations",
         type=int,
         nargs="?",
-        default=1,
+        default=2,
         help="Number of iterations. Type: int.",
     )
     return parser.parse_args()
