@@ -41,11 +41,15 @@ class HalfedgeMesh:
             )
 
     def __eq__(self, other):
-        return isinstance(other, type(self)) and (
-            self.vertices,
-            self.halfedges,
-            self.facets,
-        ) == (other.vertices, other.halfedges, other.facets)
+        return (
+            isinstance(other, type(self))
+            and (
+                self.vertices,
+                self.halfedges,
+                self.facets,
+            )
+            == (other.vertices, other.halfedges, other.facets)
+        )
 
     def __hash__(self):
         return (
@@ -149,8 +153,13 @@ class HalfedgeMesh:
             # verts = [1,2,3] then zip(verts, verts[1:]) = [(1,2),(2,3)]
             # note: we skip line[0] because it represents the number of vertices
             # in the facet.
-            all_facet_edges = list(zip(line[1:], line[2:]))
-            all_facet_edges.append((line[3], line[1]))
+            # all_facet_edges = list(zip(line[1:], line[2:]))
+            # all_facet_edges.append((line[3], line[1]))
+            all_facet_edges = [
+                (line[1], line[2]),
+                (line[2], line[3]),
+                (line[3], line[1]),
+            ]
 
             # For every halfedge around the facet
             for i in range(3):
