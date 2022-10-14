@@ -21,16 +21,16 @@ def arg_parser():
         "--mesh",
         type=str,
         nargs="?",
-        default="teapot",
-        help="Mesh name.",
+        default="cube",
+        help="Mesh name. Type: str.",
     )
     parser.add_argument(
         "-it",
         "--iterations",
         type=int,
         nargs="?",
-        default=5,
-        help="Number of iterations.",
+        default=1,
+        help="Number of iterations. Type: int.",
     )
     return parser.parse_args()
 
@@ -77,6 +77,8 @@ def main(mesh_name, iterations):
     new_mesh = mesh.loop_subdivision()
     os.remove(mesh_path)
     save_halfmesh_as_obj(new_mesh, f"{save_path}_{iterations}")
+    current_directory = os.getcwd() + "/" + f"{save_path}_{iterations}.obj"
+    print("mesh saved at", current_directory)
 
 
 if __name__ == "__main__":
