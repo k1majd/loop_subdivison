@@ -6,5 +6,4 @@ https://github.com/carlosrojas/halfedge_mesh.git is used.
 # Usage
 To perform the loop subdivision: 
 1. Clone this repository.
- 
-    git clone https://github.com/k1majd/loop_subdivison.git
+> git clone https://github.com/k1majd/loop_subdivison.git
