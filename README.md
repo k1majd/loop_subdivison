@@ -9,3 +9,4 @@ To perform the loop subdivision:
 ```
 git clone https://github.com/k1majd/loop_subdivison.git
 ```
+2. Store your .off file in `loop_subdivison/Subdivision/Python/halfedge_mesh/tests/data/`
