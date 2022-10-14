@@ -1,6 +1,7 @@
 import sys
 from .config import EPSILON
 import math
+import functools
 
 # TODO: Reorder functions
 
@@ -461,7 +462,7 @@ def allclose(v1, v2):
     v2 = make_iterable(v2)
 
     elementwise_compare = list(map((lambda x, y: abs(x - y) < EPSILON), v1, v2))
-    return reduce((lambda x, y: x and y), elementwise_compare)
+    return functools.reduce((lambda x, y: x and y), elementwise_compare)
 
 
 def make_iterable(obj):
@@ -488,7 +489,7 @@ def dot(v1, v2):
     Return v1 dot v2
     """
     elementwise_multiply = list(map((lambda x, y: x * y), v1, v2))
-    return reduce((lambda x, y: x + y), elementwise_multiply)
+    return functools.reduce((lambda x, y: x + y), elementwise_multiply)
 
 
 def norm(vec):
@@ -496,7 +497,7 @@ def norm(vec):
 
     vec - a 3d vector expressed as a list of 3 floats.
     """
-    return math.sqrt(reduce((lambda x, y: x + y * y), vec, 0.0))
+    return math.sqrt(functools.reduce((lambda x, y: x + y * y), vec, 0.0))
 
 
 def normalize(vec):

@@ -24,10 +24,19 @@ def arg_parser():
         default="teapot",
         help="Mesh name.",
     )
+    parser.add_argument(
+        "-it",
+        "--iterations",
+        type=int,
+        nargs="?",
+        default=5,
+        help="Number of iterations.",
+    )
     return parser.parse_args()
 
 
 def save_halfmesh_as_obj(mesh, file_name):
+    file_name = file_name + ".obj"
     with open(file_name, "w") as open_file:
         for vertex in mesh.vertices:
             lv = vertex.get_vertex()
@@ -37,24 +46,39 @@ def save_halfmesh_as_obj(mesh, file_name):
             open_file.write("f {} {} {}\n".format(face.a + 1, face.b + 1, face.c + 1))
 
 
-def main(mesh_name):
+def save_halfmesh_as_off(mesh, file_name):
+    file_name = file_name + ".off"
+    with open(file_name, "w") as open_file:
+        open_file.write("OFF\n")
+        open_file.write(f"{len(mesh.vertices)} {len(mesh.facets)} 0\n")
+        for vertex in mesh.vertices:
+            lv = vertex.get_vertex()
+            open_file.write("{} {} {} \n".format(lv[0], lv[1], lv[2]))
+
+        for face in mesh.facets:
+            open_file.write("3 {} {} {}\n".format(face.a, face.b, face.c))
+
+
+def main(mesh_name, iterations):
     mesh_path = f"halfedge_mesh/tests/data/{mesh_name}.off"
-    save_path = f"loop_{mesh_name}.obj"
+    save_path = f"{mesh_name}"
+
+    for i in range(iterations - 1):
+        print(f"loop subdivision, iteration {i + 1}")
+        mesh = halfedge_mesh.SubDivider(mesh_path)
+        if i > 0:
+            # remove the old mesh
+            os.remove(mesh_path)
+        new_mesh = mesh.loop_subdivision()
+        save_halfmesh_as_off(new_mesh, f"{save_path}_{i+1}")
+        mesh_path = f"{save_path}_{i+1}.off"
+    print("loop subdivision, iteration", iterations)
     mesh = halfedge_mesh.SubDivider(mesh_path)
-
-    counter = 0
-    for halfedge in mesh.halfedges:
-        if halfedge.opposite is None:
-            print("bound")
-            counter += 1
-    print(len(mesh.halfedges))
-    print(counter)
-
     new_mesh = mesh.loop_subdivision()
-
-    save_halfmesh_as_obj(new_mesh, save_path)
+    os.remove(mesh_path)
+    save_halfmesh_as_obj(new_mesh, f"{save_path}_{iterations}")
 
 
 if __name__ == "__main__":
     args = arg_parser()
-    main(args.mesh)
+    main(args.mesh, args.iterations)

@@ -121,10 +121,10 @@ class SubDivider(halfedge_mesh.HalfedgeMesh):
     def loop_subdivision(self):
         """perform loop subdivision on the mesh"""
         mesh_new = halfedge_mesh.HalfedgeMesh()
-        vertex_list = []
-        face_list = []
-        face_index = 0
-        vertex_index = 0
+        vertex_list = []  # stores the vertex list of new mesh
+        face_list = []  # stores the face list of new mesh
+        face_index = 0  # index of current created face
+        vertex_index = 0  # index of current created vertex
         odd_explored = {}  # map each explored halfedge to its odd vertex
         even_explored = {}  # map each explored vertex to its even vertex
         vertex_index_recorder = {
