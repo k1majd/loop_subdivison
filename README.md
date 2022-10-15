@@ -10,3 +10,7 @@ To perform the loop subdivision:
 git clone https://github.com/k1majd/loop_subdivison.git
 ```
 2. Store your .off file in `loop_subdivison/Subdivision/Python/halfedge_mesh/tests/data/`
+3. Run `main.py -m [name of mesh file in string form without .off] -it [number of subdivision iterations]`. For example:
+```
+main.py -m "cube" -it 2
+```
