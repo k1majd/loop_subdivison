@@ -60,7 +60,9 @@ def save_halfmesh_as_off(mesh, file_name):
 
 
 def main(mesh_name, iterations):
-    mesh_path = f"halfedge_mesh/tests/data/{mesh_name}.off"
+    cwd = os.path.dirname(os.path.realpath(__file__))
+    # mesh_path = f"halfedge_mesh/tests/data/{mesh_name}.off"
+    mesh_path = cwd + f"/tests/data/{mesh_name}.off"
     save_path = f"{mesh_name}"
 
     for i in range(iterations - 1):
